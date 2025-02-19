@@ -15,27 +15,10 @@ namespace TechLibrary.Controllers
         [ProducesResponseType(typeof(ResponseErrorMessagesJson),StatusCodes.Status400BadRequest)]
         public IActionResult Register(RequestUserJson request)
         {
-            try
-            {
-                var useCase = new RegisterUserUseCase();
-                var response = useCase.Execute(request);
+            var useCase = new RegisterUserUseCase();
+            var response = useCase.Execute(request);
 
-                return Created(string.Empty, response);
-            }
-            catch (TechLibraryException e)
-            {
-                return BadRequest(new ResponseErrorMessagesJson
-                {
-                    Errors = e.GetErrorMessages()
-                });
-            }
-            catch
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErrorMessagesJson
-                {
-                    Errors = new List<string> {"Unknown error"}
-                });
-            }
+            return Created(string.Empty, response);
         }
     }
 }

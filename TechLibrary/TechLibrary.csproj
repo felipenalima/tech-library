@@ -12,18 +12,33 @@
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.2" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.5.0" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.4.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Remove="Controllers\WeatherForecastController.cs" />
       <Compile Remove="WeatherForecast.cs" />
+      <Compile Remove="Filters\ExceptionFilters\**" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TechLibrary.Communication\TechLibrary.Communication.csproj" />
       <ProjectReference Include="..\TechLibrary.Exception\TechLibrary.Exception.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Filters\ExceptionFilters\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Filters\ExceptionFilters\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Filters\ExceptionFilters\**" />
     </ItemGroup>
 
 </Project>
